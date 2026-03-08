@@ -29,3 +29,10 @@ Your 4 a.m. song is so cool.
    ```bash
     allure serve allure_results
    ```
+
+## Test cases
+
+1. Test FAQ.
+   There is a chapter of «Вопросы о важном» bottom of the main page.
+   The chapter includes eight questions and is made with vertically collapsing accordions.
+   We made tests to check opening elements and each has an expected text.
