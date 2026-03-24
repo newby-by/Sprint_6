@@ -14,7 +14,7 @@ class TestsMainPage:
     def test_main_page_is_available(self, driver):
         main_page = MainPage(driver)
         main_page.open(data.BASE_URL)
-        
+
         assert main_page.has_expected_title()
 
     @allure.title('The faq accordion with clickable elements')
@@ -26,16 +26,18 @@ class TestsMainPage:
         self, driver, number
     ):
         main_page = MainPage(driver)
-        
+
         main_page.open(data.BASE_URL)
 
         main_page.scroll_to(MainPage.QUESTION(number))
         main_page.click(MainPage.QUESTION(number))
-       
+
         with allure.step('Get a question and an answer'):
             question = main_page.get_question_form_FAQ_by_number(number)
             answer = main_page.get_answer_form_FAQ_by_number(number)
 
         with allure.step('Checking'):
-            assert (main_page.is_not_hidden_answer(number) and
-                    data.MainPageData.FAQAccordion.FAQ[question] == answer)
+            assert (
+                main_page.is_not_hidden_answer(number) and
+                (data.MainPageData.FAQAccordion.FAQ[question] == answer)
+            )
